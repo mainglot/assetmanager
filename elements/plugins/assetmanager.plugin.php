@@ -31,17 +31,21 @@ switch ($modx->event->name) {
     //------------------------------------------------------------------------------
     case 'OnDocFormPrerender':
         $classes = json_decode($modx->getOption('assman.class_keys'),true);
+        $templates = json_decode($modx->getOption('assman.template_ids'), true);
+        $templates = array_filter($templates);
         // New Resource?
         if (empty($resource)) {
             $class_key = (isset($_GET['class_key'])) ? $_GET['class_key'] : 'modDocument';
             $page_id = 0;
+            $template = 0;
         } 
         else {
             $class_key = $resource->get('class_key');    
             $page_id = $resource->get('id');
+            $template = $resource->get('template');
         }
 
-        if (in_array($class_key,$classes)) {
+        if (in_array($class_key,$classes) && in_array($template, $templates)) {
             $Page = new \Assman\PageController($modx);
             $Page->getPageAssetsTab(array('page_id'=>$page_id,'_nolayout'=>true));
         }
