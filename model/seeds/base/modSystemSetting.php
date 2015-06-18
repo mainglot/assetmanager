@@ -41,6 +41,13 @@ return array(
 		'area' => 'assman:default'
     ),
     array(
+        'key'  =>     'assman.template_ids',
+		'value'=>     '[]',
+		'xtype'=>     'textfield',
+		'namespace' => 'assman',
+		'area' => 'assman:default'
+    ),
+    array(
         'key'  =>     'assman.thumbnail_width',
 		'value'=>     '240',
 		'xtype'=>     'textfield',
