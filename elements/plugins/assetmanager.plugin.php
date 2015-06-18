@@ -45,7 +45,7 @@ switch ($modx->event->name) {
             $template = $resource->get('template');
         }
 
-        if (in_array($class_key,$classes) && in_array($template, $templates)) {
+        if (in_array($class_key,$classes) && (empty($templates) || in_array($template, $templates))) {
             $Page = new \Assman\PageController($modx);
             $Page->getPageAssetsTab(array('page_id'=>$page_id,'_nolayout'=>true));
         }
